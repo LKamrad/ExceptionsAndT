@@ -20,7 +20,7 @@ namespace Baum
         where T : IComparable
     {
         INode<T> AddToParent(T parentValue, T value);
-        bool Conatins(T Value);
+        bool Contains(T Value);
         IEnumerable<T> PreOrderValues();
         IEnumerable<T> PostOrderValues();
     }

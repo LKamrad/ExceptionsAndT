@@ -10,12 +10,14 @@ namespace Baum
     class Tree<T> : ITree<T>
         where T : IComparable
     {
+        private INode<T> _parent;
 
-
-
-        public Tree()
+        public Tree(T input)
         {
-
+            //_parent = new Node<T>()
+            //{
+            //    Value = input;
+            //}
 
         }
         public INode<T> AddToParent(T parentValue, T value)
@@ -23,7 +25,7 @@ namespace Baum
             throw new NotImplementedException();
         }
 
-        public bool Conatins(T Value)
+        public bool Contains(T Value)
         {
             throw new NotImplementedException();
         }
@@ -44,7 +46,7 @@ namespace Baum
     {
         public Node() { }
 
-        public T Value => throw new NotImplementedException();
+        public T Value { get; set; }
 
         public IEnumerable<INode<T>> Children => throw new NotImplementedException();
 
