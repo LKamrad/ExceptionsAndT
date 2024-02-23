@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "Exceptions\Exceptions.csproj", "{9900153E-982A-4B90-8BA2-6B78FA658B11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions2", "Exceptions2\Exceptions2.csproj", "{19F99970-8B1F-47E4-96B8-57A7E453F113}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baum", "Baum\Baum.csproj", "{802DF559-4CA5-4F9B-9B0C-884FD3C6772A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9900153E-982A-4B90-8BA2-6B78FA658B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9900153E-982A-4B90-8BA2-6B78FA658B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9900153E-982A-4B90-8BA2-6B78FA658B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9900153E-982A-4B90-8BA2-6B78FA658B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F99970-8B1F-47E4-96B8-57A7E453F113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F99970-8B1F-47E4-96B8-57A7E453F113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F99970-8B1F-47E4-96B8-57A7E453F113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F99970-8B1F-47E4-96B8-57A7E453F113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{802DF559-4CA5-4F9B-9B0C-884FD3C6772A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{802DF559-4CA5-4F9B-9B0C-884FD3C6772A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{802DF559-4CA5-4F9B-9B0C-884FD3C6772A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{802DF559-4CA5-4F9B-9B0C-884FD3C6772A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B494A599-071F-4A8D-986B-B79C1A075292}
+	EndGlobalSection
+EndGlobal
