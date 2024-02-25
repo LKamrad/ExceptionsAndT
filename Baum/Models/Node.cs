@@ -17,13 +17,6 @@ namespace Baum
 
         }
 
-        public void PrintChildValues()
-        {
-            foreach (var child in _childValues)
-            {
-                Console.WriteLine(child);
-            }
-        }
         public T Value { get; set; }
 
         public IEnumerable<INode<T>> Children { get { return _children; } }

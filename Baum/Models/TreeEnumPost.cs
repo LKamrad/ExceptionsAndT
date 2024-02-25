@@ -14,8 +14,6 @@ namespace Baum
         // Enumerators are positioned before the first element
         // until the first MoveNext() call.
         int position = -1;
-        Stack<INode<T>> _stack = new Stack<INode<T>>();
-        List<INode<T>> _list = new List<INode<T>>();
 
         INode<T> selectedNode = null;
 
