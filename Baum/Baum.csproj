@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Interfaces.cs" />
     <Compile Include="Models\Node.cs" />
-    <Compile Include="Models\TreeEnum.cs" />
+    <Compile Include="Models\NodeEnum.cs" />
     <Compile Include="Models\TreeEnumPost.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

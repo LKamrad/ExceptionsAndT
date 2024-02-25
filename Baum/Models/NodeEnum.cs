@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Baum
 {
-    public class TreeEnum<T> : IEnumerator<T>
+    public class NodeEnum<T> : IEnumerator<T>
     {
         private List<INode<T>> _nodes;
 
@@ -15,7 +15,7 @@ namespace Baum
         // until the first MoveNext() call.
         int position = -1;
 
-        public TreeEnum(List<INode<T>> list)
+        public NodeEnum(List<INode<T>> list)
         {
             _nodes = list;
         }
@@ -33,7 +33,7 @@ namespace Baum
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            
         }
 
         object IEnumerator.Current

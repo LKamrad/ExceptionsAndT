@@ -48,7 +48,8 @@ namespace Baum
 
         public IEnumerator<T> GetEnumerator()
         {
-            return new TreeEnum<T>(_children);
+            return new NodeEnum<T>(_children);
+
         }
 
         public IEnumerable<T> PostOrderValues()
@@ -84,7 +85,8 @@ namespace Baum
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return new TreeEnum<T>(_children);
+            return GetEnumerator();
+
         }
     }
 }

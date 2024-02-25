@@ -28,29 +28,56 @@ namespace Baum
         public INode<T> AddToParent(T parentValue, T value)
         {
 
-            if (_parent.Value.CompareTo(parentValue) == 0)
+            INode<T> temp = Search(parentValue);
+
+            if(temp != null)
             {
-                return _parent.Add(value);
-            }
-            foreach(var child in _parent.Children)
-            {
-                if (child.Value.CompareTo(parentValue) == 0)
-                {
-                    return child.Add(value);
-                }
+                return temp.Add(value);
             }
             throw new InvalidOperationException();
         }
 
+        public INode<T> Search(T value)
+        {
+            if(_parent.Value.CompareTo(value) == 0)
+            {
+                return _parent;
+            }
+            return SearchChild(_parent, value);
+        }
+        public INode<T> SearchChild(INode<T> node, T value)
+        {
+            INode<T> temp = null;
+            foreach (var child in node.Children)
+            {
+                if (child.Children != null)
+                {
+                    temp = SearchChild(child, value);
+                    if(temp != null)
+                    {
+                        return temp;
+                    }
+                }
+                if (child.Value.CompareTo(value) == 0)
+                {
+
+                    temp = child;
+                    return temp;
+                }
+            }
+
+            return temp;
+        }
+
+
         public bool Contains(T Value)
         {
-            foreach(var pv in _parent.ChildValues)
+            foreach(var pv in PostOrderValues())
             {
                 if (pv.CompareTo(Value) == 0)
                 {
                     return true;
                 }
-                
             }
             return false;
         }
