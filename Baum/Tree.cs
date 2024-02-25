@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,71 +11,68 @@ namespace Baum
     class Tree<T> : ITree<T>
         where T : IComparable
     {
-        private INode<T> _parent;
+        public  INode<T> _parent;
 
         public Tree(T input)
         {
-            //_parent = new Node<T>()
-            //{
-            //    Value = input;
-            //}
+
+            Node<T> _temp = new Node<T>()
+            {
+                Value = input
+            };
+
+            _parent = _temp;
+
 
         }
         public INode<T> AddToParent(T parentValue, T value)
         {
-            throw new NotImplementedException();
+
+            if (_parent.Value.CompareTo(parentValue) == 0)
+            {
+                return _parent.Add(value);
+            }
+            foreach(var child in _parent.Children)
+            {
+                if (child.Value.CompareTo(parentValue) == 0)
+                {
+                    return child.Add(value);
+                }
+            }
+            throw new InvalidOperationException();
         }
 
         public bool Contains(T Value)
         {
-            throw new NotImplementedException();
+            foreach(var pv in _parent.ChildValues)
+            {
+                if (pv.CompareTo(Value) == 0)
+                {
+                    return true;
+                }
+                
+            }
+            return false;
         }
 
         public IEnumerable<T> PostOrderValues()
         {
-            throw new NotImplementedException();
+            return _parent.PostOrderValues();
         }
 
         public IEnumerable<T> PreOrderValues()
         {
-            throw new NotImplementedException();
+            return _parent.PreOrderValues();
         }
+
+
 
     }
 
-    class Node<T> : INode<T>
-    {
-        public Node() { }
 
-        public T Value { get; set; }
 
-        public IEnumerable<INode<T>> Children => throw new NotImplementedException();
 
-        public IEnumerable<T> ChildValues => throw new NotImplementedException();
 
-        public INode<T> Add(T nodeValue)
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerable<T> PostOrderValues()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<T> PreOrderValues()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-    }
 }
