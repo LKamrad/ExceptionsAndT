@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,31 +11,37 @@ namespace Baum
 {
     public class NodeEnum<T> : IEnumerator<T>
     {
-        private List<INode<T>> _nodes;
+        private INode<T> head;
 
         // Enumerators are positioned before the first element
         // until the first MoveNext() call.
         int position = -1;
+        List<INode<T>> Children;
 
-        public NodeEnum(List<INode<T>> list)
+        public NodeEnum(INode<T> input)
         {
-            _nodes = list;
+            head = input;
+            Children = (List<INode<T>>)head.Children;
         }
+
 
         public bool MoveNext()
         {
+
             position++;
-            return (position < _nodes.Count);
+            return position <= Children.Count;
         }
 
-        public void Reset()
-        {
-            position = -1;
-        }
+        
 
         public void Dispose()
         {
             
+        }
+
+        public void Reset()
+        {
+            int position = -1;
         }
 
         object IEnumerator.Current
@@ -50,7 +58,11 @@ namespace Baum
             {
                 try
                 {
-                    return _nodes[position];
+                    if(position < Children.Count)
+                    {
+                        return Children[position];
+                    }
+                    return head;
                 }
                 catch (IndexOutOfRangeException)
                 {
