@@ -1,9 +1,11 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Baum
 {
@@ -57,6 +59,7 @@ namespace Baum
             {
                 IEnumerable<T> toReturn = (kind as Node<T>).PostOrderValues();
 
+
                 foreach (var node in toReturn)
                 {
                     yield return node;
@@ -68,8 +71,9 @@ namespace Baum
         public IEnumerable<T> PreOrderValues()
         {
             yield return Value;
-            foreach (var kind in Children)
+            foreach (var kind in _children)
             {
+
                 IEnumerable<T> toReturn = (kind as Node<T>).PreOrderValues();
 
                 foreach (var node in toReturn)

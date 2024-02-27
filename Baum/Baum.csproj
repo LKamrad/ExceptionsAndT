@@ -46,10 +46,9 @@
     <Compile Include="Interfaces.cs" />
     <Compile Include="Models\Node.cs" />
     <Compile Include="Models\NodeEnum.cs" />
-    <Compile Include="Models\TreeEnumPost.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tree.cs" />
+    <Compile Include="Models\Tree.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
