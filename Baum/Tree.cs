@@ -23,7 +23,6 @@ namespace Baum
 
             _parent = _temp;
 
-
         }
         public INode<T> AddToParent(T parentValue, T value)
         {

@@ -44,7 +44,7 @@ namespace Exceptions2.Models
             }
             else
             {
-                throw new RailwayStationException("No train in railwaystation!");
+                throw new RailwayStationException("No train at the railwaystation!");
             }
 
 

@@ -32,12 +32,30 @@ namespace Exceptions2
             BochumHbf.AddTrain(train5);
             Console.WriteLine(BochumHbf);
 
-            BochumHbf.SendTrainAway();
-            BochumHbf.SendTrainAway();
-            BochumHbf.SendTrainAway();
+            Train temp = BochumHbf.SendTrainAway();
+            Console.WriteLine("Schicke weg");
+            Console.WriteLine(temp);
+            temp = BochumHbf.SendTrainAway();
+            Console.WriteLine("Schicke weg");
+            Console.WriteLine(temp);
+            temp = BochumHbf.SendTrainAway();
+            Console.WriteLine("Schicke weg");
+            Console.WriteLine(temp);
+            Console.WriteLine("Was bleibt übrig");
             Console.WriteLine(BochumHbf);
-            BochumHbf.SendTrainAway();
-            BochumHbf.SendTrainAway();
+            temp = BochumHbf.SendTrainAway();
+            Console.WriteLine("Schicke weg");
+            Console.WriteLine(temp);
+            try
+            {
+                temp = BochumHbf.SendTrainAway();
+                Console.WriteLine("Schicke weg");
+                Console.WriteLine(temp);
+            }
+            catch(RailwayStationException e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
 
         }
