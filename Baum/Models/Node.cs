@@ -48,54 +48,38 @@ namespace Baum
 
         public IEnumerator<T> GetEnumerator()
         {
-            return new NodeEnum<T>(this);
+            return new NodeEnum<T>(_children);
         }
 
         public IEnumerable<T> PostOrderValues()
         {
-            List<T> ToReturn = new List<T>();
-            foreach(var child in _children)
+            foreach (var kind in Children)
             {
-                List<T> children = (List<T>)child.PostOrderValues();
-                foreach (var c in children)
+                IEnumerable<T> toReturn = (kind as Node<T>).PostOrderValues();
+
+                foreach (var node in toReturn)
                 {
-                    ToReturn.Add(c);
+                    yield return node;
                 }
             }
-            ToReturn.Add(Value);
-            return ToReturn;
+            yield return Value;
         }
 
         public IEnumerable<T> PreOrderValues()
         {
-            List<T> ToReturn = new List<T>();
-            ToReturn.Add(Value);
-            foreach (var child in _children)
+            yield return Value;
+            foreach (var kind in Children)
             {
-                List<T> children = (List<T>)child.PreOrderValues();
-                foreach (var c in children)
+                IEnumerable<T> toReturn = (kind as Node<T>).PreOrderValues();
+
+                foreach (var node in toReturn)
                 {
-                    ToReturn.Add(c);
+                    yield return node;
                 }
             }
             
-            return ToReturn;
         }
-        public IEnumerable<T> Test()
-        {
-            List<T> list = new List<T>();
 
-            foreach(var child in Children)
-            {
-
-            }
-            foreach (var child in this)
-            {
-                list.Add(child);
-            }
-            list.Add(Value);
-            return list;
-        }
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();

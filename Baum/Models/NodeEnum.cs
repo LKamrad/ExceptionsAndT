@@ -11,37 +11,33 @@ namespace Baum
 {
     public class NodeEnum<T> : IEnumerator<T>
     {
-        private INode<T> head;
+        private List<INode<T>> _nodes;
 
         // Enumerators are positioned before the first element
         // until the first MoveNext() call.
         int position = -1;
-        List<INode<T>> Children;
 
-        public NodeEnum(INode<T> input)
+
+        public NodeEnum(List<INode<T>> nodes)
         {
-            head = input;
-            Children = (List<INode<T>>)head.Children;
+            _nodes = nodes;
         }
-
 
         public bool MoveNext()
         {
-
             position++;
-            return position <= Children.Count;
-        }
 
-        
-
-        public void Dispose()
-        {
-            
+            return position < _nodes.Count;
         }
 
         public void Reset()
         {
-            int position = -1;
+            position = -1;
+        }
+
+        public void Dispose()
+        {
+
         }
 
         object IEnumerator.Current
@@ -58,11 +54,7 @@ namespace Baum
             {
                 try
                 {
-                    if(position < Children.Count)
-                    {
-                        return Children[position];
-                    }
-                    return head;
+                    return _nodes[position];
                 }
                 catch (IndexOutOfRangeException)
                 {

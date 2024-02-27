@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Baum
 {
@@ -83,14 +84,32 @@ namespace Baum
 
         public IEnumerable<T> PostOrderValues()
         {
-            return _parent.PostOrderValues();
+            foreach (var pv in _parent.Children)
+            {
+                IEnumerable<T> toReturn = (pv as Node<T>).PostOrderValues();
+
+                foreach (var node in toReturn)
+                {
+                    yield return node;
+                }
+            }
+            yield return _parent.Value;
         }
 
         public IEnumerable<T> PreOrderValues()
         {
-            return _parent.PreOrderValues();
-        }
+            yield return _parent.Value;
+            foreach (var pv in _parent.Children)
+            {
+                IEnumerable<T> toReturn = (pv as Node<T>).PreOrderValues();
 
+                foreach (var node in toReturn)
+                {
+                    yield return node;
+                }
+            }
+            
+        }
 
 
     }

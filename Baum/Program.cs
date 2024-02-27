@@ -25,18 +25,6 @@ namespace Baum
             Console.WriteLine("PostOrder : \n" +
                    String.Join(", ", cityTree.PostOrderValues()));
 
-            Console.WriteLine("---------------------------");
-            INode<String> node = cityTree.Search("Frankfurt");
-
-            Console.WriteLine(node);
-            foreach(var c in node)
-            {
-                Console.WriteLine(c);
-            }
-
-            
-
-
         }
     }
 }
