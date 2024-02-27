@@ -21,11 +21,11 @@ namespace MarioSpiel
         /// </summary>
         public Mario()
         {
-            _lifeCount = 3;
+            LifeCount = 3;
             _state = new SmallMario();
             _coins = 0;
         }
-        public int LifeCount { get { return _lifeCount;  } }
+        public int LifeCount { get { return _lifeCount;  } private set { _lifeCount = value; } }
 
 
 
@@ -34,29 +34,37 @@ namespace MarioSpiel
         /// von Mariotyp (abhängig von enum MarioState)
         /// </summary>
         /// <exception cref="UnknownMarioState">
-        /// Wirft die Ausname wenn stateID ist nicht in MarioState
+        /// Wirft die Ausname wenn stateID ist nicht ein MarioState
         /// </exception>
-        public IState GetState(MarioState stateID)
+        //public IState GetState(MarioState stateID)
+        //{
+
+
+        //    if (stateID == MarioState.SmallMario)
+        //    {
+        //        return new SmallMario();
+        //    }
+        //    if (stateID == MarioState.SuperMario)
+        //    {
+        //        return new SuperMario();
+        //    }
+        //    if (stateID == MarioState.FireMario)
+        //    {
+        //        return new FireMario();
+        //    }
+        //    if (stateID == MarioState.CapeMario)
+        //    {
+        //        return new CapeMario();
+        //    }
+        //    throw new UnknownMarioState($"Unbekanter State {stateID}");
+        //}
+
+        public void ChangeState()
         {
-
-
-            if (stateID == MarioState.SmallMario)
+            if (_state.ClassState != null) 
             {
-                return new SmallMario();
+                _state = _state.ClassState;
             }
-            if (stateID == MarioState.SuperMario)
-            {
-                return new SuperMario();
-            }
-            if (stateID == MarioState.FireMario)
-            {
-                return new FireMario();
-            }
-            if (stateID == MarioState.CapeMario)
-            {
-                return new CapeMario();
-            }
-            throw new UnknownMarioState($"Unbekanter State {stateID}");
         }
 
         /// <summary>
@@ -78,7 +86,7 @@ namespace MarioSpiel
         {
             if(_coins >= 4000)
             {
-                _lifeCount++;
+                LifeCount++;
                 _coins -= 4000;
                 Console.WriteLine($"+ Extra life!");
             }
@@ -93,8 +101,8 @@ namespace MarioSpiel
         /// </exception>
         public void LostLife()
         {
-            _lifeCount--;
-            if (_lifeCount == 0)
+            LifeCount--;
+            if (LifeCount == 0)
             {
                 throw new GameOver("Du hast verloren!");
             }
@@ -105,11 +113,11 @@ namespace MarioSpiel
         /// <summary>
         /// Method <c>MarioStateAktualisieren</c> Ändert Mario state
         /// </summary>
-        public void MarioStateAktualisieren(MarioState stateID)
-        {
-            //State = stateID;
-            _state = GetState(stateID);
-        }
+        //public void MarioStateAktualisieren(MarioState stateID)
+        //{
+        //    //State = stateID;
+        //    _state = GetState(stateID);
+        //}
 
 
 
@@ -121,7 +129,8 @@ namespace MarioSpiel
         {
             _state.GotMushroom();
             GotCoins(100);
-            MarioStateAktualisieren(_state.State);
+            ChangeState();
+            //MarioStateAktualisieren(_state.State);
         }
 
 
@@ -133,7 +142,8 @@ namespace MarioSpiel
         {
             _state.GotFireFlower();
             GotCoins(200);
-            MarioStateAktualisieren(_state.State);
+            ChangeState();
+           // MarioStateAktualisieren(_state.State);
         }
 
         /// <summary>
@@ -144,7 +154,8 @@ namespace MarioSpiel
         {
             _state.GotFeather();
             GotCoins(300);
-            MarioStateAktualisieren(_state.State);
+            ChangeState();
+            // MarioStateAktualisieren(_state.State);
 
         }
 
@@ -163,8 +174,10 @@ namespace MarioSpiel
             }
             else
             {
-                MarioStateAktualisieren(_state.State);
+                
+                //MarioStateAktualisieren(_state.State);
             }
+            ChangeState();
         }
 
         /// <summary>

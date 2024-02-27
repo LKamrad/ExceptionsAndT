@@ -9,7 +9,9 @@ namespace MarioSpiel
 {
     interface IState
     {
-        MarioState State { get; }
+        MarioState State { get; set; }
+        IState ClassState { get; }
+
         void GotMushroom();
         void GotFireFlower();
 
