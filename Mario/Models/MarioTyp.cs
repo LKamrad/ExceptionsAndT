@@ -10,34 +10,40 @@ namespace MarioSpiel
     class MarioTyp : IState
     {
         public MarioState State { get; set; }
-        public IState ClassState { get; private set; }
+
+        protected Mario _mario;
+
+        public MarioTyp(Mario mario)
+        {
+            _mario = mario;
+        }
 
         public virtual void GotFeather()
         {
             Console.WriteLine($"Du bist jetzt CapeMario!");
             State = MarioState.CapeMario;
-            ClassState = new CapeMario();
+            _mario.State = new CapeMario(_mario); 
         }
 
         public virtual void GotFireFlower()
         {
             Console.WriteLine($"Du bist jetzt FireMario!");
             State = MarioState.FireMario;
-            ClassState = new FireMario();
+            _mario.State = new FireMario(_mario); 
         }
 
         public virtual void GotMushroom()
         {
             Console.WriteLine($"Du bist jetzt SuperMario!");
             State = MarioState.SuperMario;
-            ClassState = new SuperMario();
+            _mario.State = new SuperMario(_mario); 
         }
 
         public virtual void MetMonster()
         {
             Console.WriteLine($"Du hast ein Monster getroffen");
             State = MarioState.SmallMario;
-            ClassState = new SmallMario();
+            _mario.State = new SmallMario(_mario); 
         }
     }
 }

@@ -10,7 +10,7 @@ namespace MarioSpiel
     class SmallMario : MarioTyp, IState
     {
 
-        public SmallMario()
+        public SmallMario(Mario mario) : base(mario)
         {
             State = MarioState.SmallMario;
         }

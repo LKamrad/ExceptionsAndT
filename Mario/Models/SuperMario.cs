@@ -9,7 +9,7 @@ namespace MarioSpiel
 {
     class SuperMario : MarioTyp, IState
     {
-        public SuperMario()
+        public SuperMario(Mario mario) : base(mario)
         {
             State = MarioState.SuperMario;
         }

@@ -22,10 +22,11 @@ namespace MarioSpiel
         public Mario()
         {
             LifeCount = 3;
-            _state = new SmallMario();
+            _state = new SmallMario(this);
             _coins = 0;
         }
         public int LifeCount { get { return _lifeCount;  } private set { _lifeCount = value; } }
+        public IState State { get { return _state; } set { _state = value; } }
 
 
 
@@ -59,13 +60,13 @@ namespace MarioSpiel
         //    throw new UnknownMarioState($"Unbekanter State {stateID}");
         //}
 
-        public void ChangeState()
-        {
-            if (_state.ClassState != null) 
-            {
-                _state = _state.ClassState;
-            }
-        }
+        //public void ChangeState()
+        //{
+        //    if (_state.ClassState != null) 
+        //    {
+        //        _state = _state.ClassState;
+        //    }
+        //}
 
         /// <summary>
         /// Method <c>GotCoins</c> Addiert die Münze
@@ -84,10 +85,10 @@ namespace MarioSpiel
         /// </summary>
         public void ExtralifeCheck()
         {
-            if(_coins >= 4000)
+            if(_coins >= 5000)
             {
                 LifeCount++;
-                _coins -= 4000;
+                _coins -= 5000;
                 Console.WriteLine($"+ Extra life!");
             }
         }
@@ -129,7 +130,7 @@ namespace MarioSpiel
         {
             _state.GotMushroom();
             GotCoins(100);
-            ChangeState();
+            //ChangeState();
             //MarioStateAktualisieren(_state.State);
         }
 
@@ -142,7 +143,7 @@ namespace MarioSpiel
         {
             _state.GotFireFlower();
             GotCoins(200);
-            ChangeState();
+            //ChangeState();
            // MarioStateAktualisieren(_state.State);
         }
 
@@ -154,7 +155,7 @@ namespace MarioSpiel
         {
             _state.GotFeather();
             GotCoins(300);
-            ChangeState();
+            //ChangeState();
             // MarioStateAktualisieren(_state.State);
 
         }
@@ -167,17 +168,16 @@ namespace MarioSpiel
         /// </summary>
         public void MetMonster()
         {
-            _state.MetMonster();
-            if(_state is SmallMario)
+            
+            if(State is SmallMario)
             {
                 LostLife();
             }
-            else
-            {
-                
-                //MarioStateAktualisieren(_state.State);
-            }
-            ChangeState();
+            State.MetMonster();
+
+            //MarioStateAktualisieren(_state.State);
+        
+            //ChangeState();
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace MarioSpiel
         public override string ToString()
         {
             Console.ForegroundColor = (ConsoleColor)_state.State;   
-            return $"Mario: {_state.State,10} Coins: {_coins,5} Lifes: {_lifeCount,2}";
+            return $"Mario: {_state.State,10} Coins: {_coins,4} Lifes: {_lifeCount,2}";
             
         }
     }

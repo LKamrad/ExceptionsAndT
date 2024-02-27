@@ -10,7 +10,7 @@ namespace MarioSpiel
     class FireMario : MarioTyp, IState
     {
 
-        public FireMario()
+        public FireMario(Mario mario): base(mario)
         {
             State = MarioState.FireMario;
         }
