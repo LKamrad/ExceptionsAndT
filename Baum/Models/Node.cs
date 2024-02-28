@@ -57,7 +57,7 @@ namespace Baum
         {
             foreach (var kind in Children)
             {
-                IEnumerable<T> toReturn = (kind as Node<T>).PostOrderValues();
+                IEnumerable<T> toReturn = kind.PostOrderValues();
 
 
                 foreach (var node in toReturn)
@@ -74,7 +74,7 @@ namespace Baum
             foreach (var kind in _children)
             {
 
-                IEnumerable<T> toReturn = (kind as Node<T>).PreOrderValues();
+                IEnumerable<T> toReturn = kind.PreOrderValues();
 
                 foreach (var node in toReturn)
                 {

@@ -7,6 +7,15 @@ using System.Threading.Tasks;
 
 namespace Baum
 {
+    class Test1
+    {
+        public Test1()
+        {
+
+        }
+    }
+
+
     internal class Program
     {
         static void Main(string[] args)
@@ -26,6 +35,9 @@ namespace Baum
             Console.WriteLine("PostOrder : \n" +
                    String.Join(", ", cityTree.PostOrderValues()));
 
+
+
+            Console.ReadKey();
 
         }
     }
